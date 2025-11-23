@@ -97,11 +97,27 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"
         >
           <Link
-            href="/journal/new"
+            href="/journal/voice"
             className="bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+          >
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-semibold">Voice Journal</h3>
+              <p className="text-sm text-white/70">Talk with AI partner</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/journal/new"
+            className="bg-sacred-teal-600 hover:bg-sacred-teal-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
           >
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,14 +125,29 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold">New Entry</h3>
-              <p className="text-sm text-white/70">Write or record</p>
+              <h3 className="font-semibold">Write Entry</h3>
+              <p className="text-sm text-white/70">Type your thoughts</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/constitution"
+            className="bg-amber-600 hover:bg-amber-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+          >
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-semibold">Constitution</h3>
+              <p className="text-sm text-white/70">Your principles</p>
             </div>
           </Link>
 
           <Link
             href="/coaching"
-            className="bg-sacred-teal-600 hover:bg-sacred-teal-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+            className="bg-white/10 hover:bg-white/20 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
           >
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
