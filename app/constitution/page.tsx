@@ -17,17 +17,17 @@ interface Principle {
 }
 
 const categoryLabels = {
-  core_value: 'Core Value',
+  core_value: 'Sacred Value',
   life_principle: 'Life Principle',
-  decision_rule: 'Decision Rule',
+  decision_rule: 'Decision Wisdom',
   aspiration: 'Aspiration'
 }
 
 const categoryColors = {
-  core_value: 'bg-purple-500/20 text-purple-300',
-  life_principle: 'bg-blue-500/20 text-blue-300',
-  decision_rule: 'bg-green-500/20 text-green-300',
-  aspiration: 'bg-yellow-500/20 text-yellow-300'
+  core_value: 'bg-emerald-500/20 text-emerald-300',
+  life_principle: 'bg-stone-500/20 text-stone-300',
+  decision_rule: 'bg-amber-500/20 text-amber-300',
+  aspiration: 'bg-sky-500/20 text-sky-300'
 }
 
 export default function ConstitutionPage() {
@@ -59,7 +59,7 @@ export default function ConstitutionPage() {
   }
 
   const deletePrinciple = async (id: string) => {
-    if (!confirm('Delete this principle?')) return
+    if (!confirm('Release this principle?')) return
 
     await supabase.from('principles').delete().eq('id', id)
     setPrinciples(prev => prev.filter(p => p.id !== id))
@@ -67,14 +67,14 @@ export default function ConstitutionPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sacred-purple-500"></div>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -88,17 +88,32 @@ export default function ConstitutionPage() {
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-3xl font-bold text-white">Personal Constitution</h1>
-              <p className="text-white/60 mt-2">
-                Your principles and values - the foundation for all decisions
+              <p className="text-emerald-200/60 mt-2">
+                Your life plan—principles that connect you to your wisdom and guide your path
               </p>
             </div>
             <button
               onClick={() => setShowAddModal(true)}
-              className="px-4 py-2 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white rounded-lg transition-colors"
+              className="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors"
             >
               Add Principle
             </button>
           </div>
+        </motion.div>
+
+        {/* Philosophy Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 mb-8"
+        >
+          <p className="text-emerald-100/80 text-sm italic">
+            &quot;A vision to guide into the future must be based on your own origins,
+            knowledge of your ancestors, and your unique vision of the world.&quot;
+          </p>
+          <p className="text-emerald-200/60 text-xs mt-2">
+            — Inspired by the Yawanawá Life Plan
+          </p>
         </motion.div>
 
         {/* Intro Section */}
@@ -109,15 +124,34 @@ export default function ConstitutionPage() {
             className="bg-white/5 rounded-xl p-8 text-center mb-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4">
-              Start Building Your Constitution
+              Begin Your Constitution
             </h2>
             <p className="text-white/60 mb-6 max-w-lg mx-auto">
-              Like Ray Dalio&apos;s Principles, your personal constitution helps you make
-              consistent decisions aligned with your values. Start with what matters most to you.
+              Like the wisdom traditions that guide communities through generations,
+              your personal constitution becomes a living document—connecting you to
+              your values and keeping you aligned with who you truly want to be.
             </p>
+            <div className="grid grid-cols-2 gap-3 text-left max-w-md mx-auto mb-6">
+              <div className="bg-white/5 p-3 rounded-lg">
+                <p className="text-emerald-300 font-semibold text-sm">Relationship</p>
+                <p className="text-white/50 text-xs">How you connect with others</p>
+              </div>
+              <div className="bg-white/5 p-3 rounded-lg">
+                <p className="text-emerald-300 font-semibold text-sm">Responsibility</p>
+                <p className="text-white/50 text-xs">What you own and honor</p>
+              </div>
+              <div className="bg-white/5 p-3 rounded-lg">
+                <p className="text-emerald-300 font-semibold text-sm">Reciprocity</p>
+                <p className="text-white/50 text-xs">How you give and receive</p>
+              </div>
+              <div className="bg-white/5 p-3 rounded-lg">
+                <p className="text-emerald-300 font-semibold text-sm">Growth</p>
+                <p className="text-white/50 text-xs">How you transform</p>
+              </div>
+            </div>
             <button
               onClick={() => setShowAddModal(true)}
-              className="px-6 py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white rounded-lg transition-colors"
+              className="px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors"
             >
               Create Your First Principle
             </button>
@@ -157,11 +191,11 @@ export default function ConstitutionPage() {
 
                 {principle.examples && principle.examples.length > 0 && (
                   <div className="mt-4 pt-4 border-t border-white/10">
-                    <p className="text-sm text-white/60 mb-2">Examples:</p>
+                    <p className="text-sm text-white/60 mb-2">How this shows up:</p>
                     <ul className="space-y-1">
                       {principle.examples.map((example, i) => (
                         <li key={i} className="text-sm text-white/70 flex items-start gap-2">
-                          <span className="text-sacred-purple-400">•</span>
+                          <span className="text-emerald-400">•</span>
                           {example}
                         </li>
                       ))}
@@ -269,10 +303,11 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-gradient-to-br from-sacred-purple-900 to-sacred-teal-900 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
+        className="bg-gradient-to-br from-emerald-900 to-stone-900 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="text-2xl font-bold text-white mb-6">Add Principle</h2>
+        <h2 className="text-2xl font-bold text-white mb-2">Add Principle</h2>
+        <p className="text-emerald-200/60 text-sm mb-6">What wisdom guides your path?</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Category */}
@@ -286,7 +321,7 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
                   onClick={() => setCategory(cat)}
                   className={`p-3 rounded-lg text-sm transition-colors ${
                     category === cat
-                      ? 'bg-sacred-purple-600 text-white'
+                      ? 'bg-emerald-700 text-white'
                       : 'bg-white/5 text-white/60 hover:bg-white/10'
                   }`}
                 >
@@ -300,14 +335,14 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
           <button
             type="button"
             onClick={getSuggestions}
-            className="text-sm text-sacred-purple-400 hover:text-sacred-purple-300"
+            className="text-sm text-emerald-400 hover:text-emerald-300"
           >
-            Get AI suggestions based on my personality →
+            Receive wisdom suggestions based on your nature →
           </button>
 
           {showSuggestions && suggestions.length > 0 && (
             <div className="bg-white/5 rounded-lg p-3">
-              <p className="text-xs text-white/60 mb-2">Suggestions:</p>
+              <p className="text-xs text-white/60 mb-2">Suggestions aligned with your personality:</p>
               <div className="space-y-1">
                 {suggestions.map((s, i) => (
                   <button
@@ -329,15 +364,15 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
           {/* Title */}
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-white/80 mb-1">
-              Principle Title
+              Principle
             </label>
             <input
               id="title"
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
-              placeholder="e.g., Radical Transparency"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              placeholder="e.g., Honor What Is Given"
               required
             />
           </div>
@@ -345,15 +380,15 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
           {/* Description */}
           <div>
             <label htmlFor="description" className="block text-sm font-medium text-white/80 mb-1">
-              Description
+              What this means to you
             </label>
             <textarea
               id="description"
               value={description}
               onChange={e => setDescription(e.target.value)}
               rows={3}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500 resize-none"
-              placeholder="What does this principle mean to you?"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+              placeholder="How does this principle guide your life?"
               required
             />
           </div>
@@ -361,7 +396,7 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
           {/* Examples */}
           <div>
             <label className="block text-sm font-medium text-white/80 mb-1">
-              Examples (optional)
+              How it shows up (optional)
             </label>
             {examples.map((example, index) => (
               <input
@@ -369,8 +404,8 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
                 type="text"
                 value={example}
                 onChange={e => updateExample(index, e.target.value)}
-                className="w-full px-4 py-2 mb-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
-                placeholder="How would you apply this?"
+                className="w-full px-4 py-2 mb-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                placeholder="A specific way you live this principle"
               />
             ))}
             <button
@@ -387,7 +422,7 @@ function AddPrincipleModal({ onClose, onAdd }: AddPrincipleModalProps) {
             <button
               type="submit"
               disabled={loading || !title || !description}
-              className="flex-1 py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50"
+              className="flex-1 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors disabled:opacity-50"
             >
               {loading ? 'Saving...' : 'Add Principle'}
             </button>

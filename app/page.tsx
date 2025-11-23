@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-stone-50 to-stone-100">
       <motion.div
         className="max-w-4xl w-full"
         variants={containerVariants}
@@ -37,17 +37,41 @@ export default function Home() {
           className="text-center mb-12"
           variants={itemVariants}
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-sacred-purple-600 via-sacred-teal-600 to-sacred-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-800 via-stone-700 to-emerald-800 bg-clip-text text-transparent">
             Sacred Journal
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 mb-4">
-            Your personality-aware AI coaching journaling companion
+          <p className="text-xl sm:text-2xl text-stone-700 mb-4">
+            Transformation of consciousness is the basis for all transformation
           </p>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Multimodal journaling with voice, email, text, and image inputs.
-            Real-time AI coaching powered by Gemini. Knowledge graph pattern
-            recognition. Personality-aware persuasion strategies.
+          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+            A sacred space for deep reflection and personal growth. Voice-first journaling
+            that honors your inner wisdom, challenges you to grow, and helps you develop
+            your personal constitution—your principles for living with integrity.
           </p>
+        </motion.div>
+
+        {/* Core Values */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          variants={containerVariants}
+        >
+          {[
+            { value: "Gratitude", description: "Recognize the gifts in every moment" },
+            { value: "Service", description: "Support the growth of others" },
+            { value: "Growth", description: "Transform and uplift consciousness" },
+            { value: "Responsibility", description: "Own your choices and actions" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="p-4 text-center"
+              variants={itemVariants}
+            >
+              <h3 className="text-lg font-semibold text-emerald-800 mb-1">
+                {item.value}
+              </h3>
+              <p className="text-sm text-stone-600">{item.description}</p>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Feature Grid */}
@@ -57,55 +81,58 @@ export default function Home() {
         >
           {[
             {
-              icon: "🎤",
-              title: "Voice-First Journaling",
+              icon: "🌿",
+              title: "Voice-First Reflection",
               description:
-                "Real-time conversation with AI coach using Gemini Live API. Eyes-closed, voice-first interactions to reduce screen time.",
+                "Close your eyes and speak from the heart. Real-time conversation with an AI guide that listens deeply, asks probing questions, and challenges you to grow—like a wise friend who cares enough to be honest.",
             },
             {
-              icon: "📧",
-              title: "Email Integration",
+              icon: "🔥",
+              title: "Personal Constitution",
               description:
-                "Email yourself or CC sacredjournal@app. Entries automatically transcribed and added to your knowledge graph.",
+                "Develop your core principles and values—a living document that guides your decisions. Like the Yawanawá Life Plan, it connects you to your own wisdom and keeps you aligned with who you truly want to be.",
             },
             {
-              icon: "🧠",
-              title: "Personality Aware",
+              icon: "🌊",
+              title: "Working Memory",
               description:
-                "Big Five personality profiling. AI coaching tailored to your unique personality type using proven persuasion strategies.",
+                "Your journal partner remembers what matters to you—people, goals, concerns. It connects your current reflections to your past, creating a continuous thread of growth and accountability.",
             },
             {
-              icon: "🕸️",
-              title: "Knowledge Graph",
+              icon: "🦋",
+              title: "Personality-Aware Guidance",
               description:
-                "Neo4j-powered relationship mapping. Visualize your friend networks, time allocation, and goal dependencies.",
-            },
-            {
-              icon: "📸",
-              title: "Image & OCR",
-              description:
-                "Upload physical journal photos. Mistral OCR automatically transcribes handwritten notes with 95%+ accuracy.",
-            },
-            {
-              icon: "📊",
-              title: "Screen Time Metrics",
-              description:
-                "Measure success by screen time reduction. Get insights on eyes-closed meditation and voice-first usage.",
+                "Based on your unique psychological profile, receive guidance tailored to how you process information and make decisions. Not generic advice, but communication that resonates with your nature.",
             },
           ].map((feature, index) => (
             <motion.div
               key={index}
-              className="p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+              className="p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow border border-stone-200"
               variants={itemVariants}
               whileHover={{ y: -5 }}
             >
               <div className="text-4xl mb-3">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">
+              <h3 className="text-xl font-semibold mb-2 text-stone-900">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-stone-600">{feature.description}</p>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Philosophy Statement */}
+        <motion.div
+          className="mb-12 p-8 bg-emerald-900 text-white rounded-lg text-center"
+          variants={itemVariants}
+        >
+          <p className="text-lg italic mb-4">
+            "The greatest wealth is in this way of life—in the wisdom held by our elders,
+            in the connection to ourselves and each other, in harmony with the rhythms of life."
+          </p>
+          <p className="text-sm text-emerald-200">
+            Inspired by indigenous wisdom traditions that teach us to honor relationship,
+            responsibility, reciprocity, and balance in all things.
+          </p>
         </motion.div>
 
         {/* CTA Section */}
@@ -115,48 +142,48 @@ export default function Home() {
         >
           <Link
             href="/auth/signup"
-            className="px-8 py-4 bg-gradient-to-r from-sacred-purple-600 to-sacred-purple-700 text-white rounded-lg font-semibold hover:shadow-xl transition-all hover:scale-105"
+            className="px-8 py-4 bg-emerald-800 hover:bg-emerald-900 text-white rounded-lg font-semibold hover:shadow-xl transition-all hover:scale-105"
           >
-            Start Your Journey
+            Begin Your Journey
           </Link>
           <Link
-            href="/docs"
-            className="px-8 py-4 bg-white text-sacred-purple-600 border-2 border-sacred-purple-600 rounded-lg font-semibold hover:bg-sacred-purple-50 transition-all"
+            href="/auth/signin"
+            className="px-8 py-4 bg-white text-emerald-800 border-2 border-emerald-800 rounded-lg font-semibold hover:bg-emerald-50 transition-all"
           >
-            Explore Documentation
+            Continue Your Path
           </Link>
         </motion.div>
 
-        {/* Tech Stack Info */}
+        {/* Approach */}
         <motion.div
-          className="mt-16 p-6 bg-white rounded-lg border border-gray-200 shadow-md"
+          className="mt-16 p-6 bg-white rounded-lg border border-stone-200 shadow-md"
           variants={itemVariants}
         >
-          <h3 className="text-lg font-semibold mb-4 text-gray-900">
-            Modern Tech Stack (November 2025)
+          <h3 className="text-lg font-semibold mb-4 text-stone-900">
+            Our Approach
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
-            {[
-              "Next.js 16",
-              "React 19",
-              "TypeScript",
-              "Tailwind CSS 4",
-              "Zustand",
-              "React Query",
-              "Supabase",
-              "Gemini 3 Pro",
-              "DeepGram Nova-3",
-              "Neo4j",
-              "Framer Motion",
-              "Recharts",
-            ].map((tech) => (
-              <div
-                key={tech}
-                className="px-3 py-2 bg-sacred-purple-100 text-sacred-purple-700 rounded-md text-center font-medium"
-              >
-                {tech}
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <div>
+              <h4 className="font-semibold text-emerald-800 mb-2">Not a Sycophant</h4>
+              <p className="text-stone-600">
+                Your AI guide challenges assumptions, names avoidance, and asks about your
+                role in situations. Growth requires honest reflection, not empty validation.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-emerald-800 mb-2">Deep Listening</h4>
+              <p className="text-stone-600">
+                Every response draws from your history, principles, and personality.
+                Your guide connects present to past, showing patterns and progress.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-emerald-800 mb-2">Sacred Container</h4>
+              <p className="text-stone-600">
+                This space is held with intention. Your reflections are private,
+                encrypted, and treated with the respect they deserve.
+              </p>
+            </div>
           </div>
         </motion.div>
       </motion.div>

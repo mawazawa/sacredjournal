@@ -61,8 +61,8 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sacred-purple-500"></div>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
       </div>
     )
   }
@@ -70,7 +70,7 @@ export default function DashboardPage() {
   const greeting = getGreeting()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -82,7 +82,7 @@ export default function DashboardPage() {
             <h1 className="text-2xl md:text-3xl font-bold text-white">
               {greeting}, {getDisplayName(user)}
             </h1>
-            <p className="text-white/60 mt-1">Ready to journal?</p>
+            <p className="text-emerald-200/60 mt-1">What's present for you today?</p>
           </div>
           <button
             onClick={handleSignOut}
@@ -101,7 +101,7 @@ export default function DashboardPage() {
         >
           <Link
             href="/journal/voice"
-            className="bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+            className="bg-emerald-700 hover:bg-emerald-600 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
           >
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -110,14 +110,14 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold">Voice Journal</h3>
-              <p className="text-sm text-white/70">Talk with AI partner</p>
+              <h3 className="font-semibold">Voice Reflection</h3>
+              <p className="text-sm text-white/70">Sacred conversation</p>
             </div>
           </Link>
 
           <Link
             href="/journal/new"
-            className="bg-sacred-teal-600 hover:bg-sacred-teal-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+            className="bg-stone-700 hover:bg-stone-600 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
           >
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,13 +126,13 @@ export default function DashboardPage() {
             </div>
             <div>
               <h3 className="font-semibold">Write Entry</h3>
-              <p className="text-sm text-white/70">Type your thoughts</p>
+              <p className="text-sm text-white/70">Capture your thoughts</p>
             </div>
           </Link>
 
           <Link
             href="/constitution"
-            className="bg-amber-600 hover:bg-amber-700 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
+            className="bg-amber-700 hover:bg-amber-600 text-white p-6 rounded-xl transition-colors flex items-center gap-4"
           >
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,8 +155,8 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold">AI Coach</h3>
-              <p className="text-sm text-white/70">Get guidance</p>
+              <h3 className="font-semibold">Seek Guidance</h3>
+              <p className="text-sm text-white/70">Ask your guide</p>
             </div>
           </Link>
 
@@ -170,8 +170,8 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold">All Entries</h3>
-              <p className="text-sm text-white/70">View history</p>
+              <h3 className="font-semibold">Past Reflections</h3>
+              <p className="text-sm text-white/70">View your journey</p>
             </div>
           </Link>
         </motion.div>
@@ -182,15 +182,16 @@ export default function DashboardPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h2 className="text-xl font-semibold text-white mb-4">Recent Entries</h2>
+          <h2 className="text-xl font-semibold text-white mb-4">Recent Reflections</h2>
           {entries.length === 0 ? (
             <div className="bg-white/5 rounded-xl p-8 text-center">
-              <p className="text-white/60">No entries yet. Start journaling!</p>
+              <p className="text-white/60 mb-2">Your journey begins with a single reflection.</p>
+              <p className="text-emerald-300/60 text-sm mb-4">Close your eyes, speak from the heart, and let the process unfold.</p>
               <Link
-                href="/journal/new"
-                className="inline-block mt-4 px-6 py-2 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white rounded-lg transition-colors"
+                href="/journal/voice"
+                className="inline-block mt-2 px-6 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors"
               >
-                Create your first entry
+                Begin your first reflection
               </Link>
             </div>
           ) : (
@@ -251,10 +252,10 @@ function formatDate(dateString: string): string {
 
 function getSourceBadgeColor(source: string): string {
   switch (source) {
-    case 'voice': return 'bg-sacred-purple-500/20 text-sacred-purple-300'
-    case 'text': return 'bg-sacred-teal-500/20 text-sacred-teal-300'
+    case 'voice': return 'bg-emerald-500/20 text-emerald-300'
+    case 'text': return 'bg-stone-500/20 text-stone-300'
     case 'email': return 'bg-blue-500/20 text-blue-300'
-    case 'image': return 'bg-yellow-500/20 text-yellow-300'
+    case 'image': return 'bg-amber-500/20 text-amber-300'
     default: return 'bg-white/10 text-white/60'
   }
 }

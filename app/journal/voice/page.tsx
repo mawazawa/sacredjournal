@@ -162,14 +162,14 @@ export default function VoiceJournalingPage() {
 
     // Combine conversation into entry content
     const content = messages
-      .map(m => `${m.role === 'user' ? 'Me' : 'Journal Partner'}: ${m.content}`)
+      .map(m => `${m.role === 'user' ? 'Me' : 'Guide'}: ${m.content}`)
       .join('\n\n')
 
     const wordCount = content.split(/\s+/).filter(w => w.length > 0).length
 
     await supabase.from('entries').insert({
       user_id: user.id,
-      title: `Voice Journal - ${new Date().toLocaleDateString()}`,
+      title: `Sacred Reflection - ${new Date().toLocaleDateString()}`,
       content,
       source: 'voice',
       word_count: wordCount
@@ -180,34 +180,37 @@ export default function VoiceJournalingPage() {
 
   if (!sessionStarted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center max-w-md"
         >
-          <div className="w-24 h-24 bg-sacred-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12 text-sacred-purple-400" fill="currentColor" viewBox="0 0 24 24">
+          <div className="w-24 h-24 bg-emerald-700/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-12 h-12 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
               <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-4">Voice Journal</h1>
-          <p className="text-white/60 mb-8">
-            Have a conversation with your journaling partner. They&apos;ll ask questions,
-            challenge your thinking, and help you reflect deeper.
+          <h1 className="text-3xl font-bold text-white mb-4">Sacred Reflection</h1>
+          <p className="text-emerald-200/70 mb-4">
+            Close your eyes and speak from the heart.
+          </p>
+          <p className="text-white/60 mb-8 text-sm">
+            Your guide will listen deeply, ask probing questions, and challenge you to grow—
+            like a wise friend who cares enough to be honest.
           </p>
           <button
             onClick={startSession}
-            className="px-8 py-4 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white font-medium rounded-xl transition-colors"
+            className="px-8 py-4 bg-emerald-700 hover:bg-emerald-600 text-white font-medium rounded-xl transition-colors"
           >
-            Start Session
+            Enter Sacred Space
           </button>
           <Link
-            href="/journal"
+            href="/dashboard"
             className="block mt-4 text-white/60 hover:text-white transition-colors"
           >
-            ← Back to Journal
+            ← Back to Dashboard
           </Link>
         </motion.div>
       </div>
@@ -215,22 +218,22 @@ export default function VoiceJournalingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-white/10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <div>
-            <Link href="/journal" className="text-white/60 hover:text-white text-sm">
+            <Link href="/dashboard" className="text-white/60 hover:text-white text-sm">
               ← Back
             </Link>
-            <h1 className="text-xl font-bold text-white mt-1">Voice Journal</h1>
+            <h1 className="text-xl font-bold text-white mt-1">Sacred Reflection</h1>
           </div>
           {messages.length > 1 && (
             <button
               onClick={saveAsEntry}
-              className="px-4 py-2 bg-sacred-teal-600 hover:bg-sacred-teal-700 text-white text-sm rounded-lg transition-colors"
+              className="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white text-sm rounded-lg transition-colors"
             >
-              Save Entry
+              Save Reflection
             </button>
           )}
         </div>
@@ -250,8 +253,8 @@ export default function VoiceJournalingPage() {
                 <div
                   className={`max-w-[85%] p-4 rounded-2xl ${
                     message.role === 'user'
-                      ? 'bg-sacred-purple-600 text-white'
-                      : 'bg-white/10 text-white'
+                      ? 'bg-stone-700 text-white'
+                      : 'bg-emerald-900/50 text-white'
                   }`}
                 >
                   <p className="whitespace-pre-wrap">{message.content}</p>
@@ -266,11 +269,11 @@ export default function VoiceJournalingPage() {
               animate={{ opacity: 1 }}
               className="flex justify-start"
             >
-              <div className="bg-white/10 p-4 rounded-2xl">
+              <div className="bg-emerald-900/50 p-4 rounded-2xl">
                 <div className="flex gap-1">
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                  <span className="w-2 h-2 bg-emerald-400/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                  <span className="w-2 h-2 bg-emerald-400/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                  <span className="w-2 h-2 bg-emerald-400/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
                 </div>
               </div>
             </motion.div>
@@ -289,7 +292,7 @@ export default function VoiceJournalingPage() {
             className={`w-20 h-20 rounded-full flex items-center justify-center transition-all ${
               isRecording
                 ? 'bg-red-600 hover:bg-red-700 animate-pulse'
-                : 'bg-sacred-purple-600 hover:bg-sacred-purple-700'
+                : 'bg-emerald-700 hover:bg-emerald-600'
             } disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {isRecording ? (
@@ -302,8 +305,8 @@ export default function VoiceJournalingPage() {
             )}
           </button>
         </div>
-        <p className="text-center text-white/40 text-sm mt-4">
-          {isRecording ? 'Tap to stop recording' : 'Tap to speak'}
+        <p className="text-center text-emerald-200/40 text-sm mt-4">
+          {isRecording ? 'Tap to complete your thought' : 'Tap to speak from the heart'}
         </p>
       </div>
     </div>

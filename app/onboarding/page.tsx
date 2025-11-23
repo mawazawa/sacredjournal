@@ -106,23 +106,29 @@ export default function OnboardingPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sacred-purple-500 mx-auto mb-4"></div>
-          <p className="text-white">Analyzing your personality...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+          <p className="text-white">Understanding your nature...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-900 flex items-center justify-center p-4">
       <div className="w-full max-w-lg">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-white mb-2">Know Thyself</h1>
+          <p className="text-emerald-200/80 text-sm">Understanding your nature helps us guide you with wisdom that resonates</p>
+        </div>
+
         {/* Progress bar */}
         <div className="mb-8">
           <div className="h-2 bg-white/10 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-sacred-purple-500"
+              className="h-full bg-emerald-500"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
@@ -157,7 +163,7 @@ export default function OnboardingPage() {
                 <button
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
-                  className="w-full py-3 px-4 bg-white/5 hover:bg-sacred-purple-600 border border-white/10 hover:border-sacred-purple-500 rounded-lg text-white transition-all text-left"
+                  className="w-full py-3 px-4 bg-white/5 hover:bg-emerald-700 border border-white/10 hover:border-emerald-500 rounded-lg text-white transition-all text-left"
                 >
                   {option.label}
                 </button>
