@@ -118,7 +118,7 @@ export default function NewEntryPage() {
   const moods = ['😊 Happy', '😔 Sad', '😤 Frustrated', '😌 Calm', '🤔 Thoughtful', '😰 Anxious', '🙏 Grateful']
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-950 p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -150,7 +150,7 @@ export default function NewEntryPage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="Give your entry a title..."
             />
           </div>
@@ -166,7 +166,7 @@ export default function NewEntryPage() {
                 className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
                   isRecording
                     ? 'bg-red-600 hover:bg-red-700 text-white'
-                    : 'bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white'
+                    : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                 } disabled:opacity-50`}
               >
                 {isRecording ? (
@@ -205,7 +205,7 @@ export default function NewEntryPage() {
                 if (source === 'voice' && !isRecording) setSource('text')
               }}
               rows={12}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500 resize-none"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
               placeholder="What's on your mind?"
               required
             />
@@ -227,7 +227,7 @@ export default function NewEntryPage() {
                   onClick={() => setMood(mood === m ? '' : m)}
                   className={`px-3 py-1 rounded-full text-sm transition-colors ${
                     mood === m
-                      ? 'bg-sacred-purple-600 text-white'
+                      ? 'bg-emerald-600 text-white'
                       : 'bg-white/10 text-white/60 hover:bg-white/20'
                   }`}
                 >
@@ -248,7 +248,7 @@ export default function NewEntryPage() {
             <button
               type="submit"
               disabled={loading || !content.trim()}
-              className="flex-1 py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Saving...' : 'Save Entry'}
             </button>

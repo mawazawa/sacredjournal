@@ -95,8 +95,8 @@ export default function EntryDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sacred-purple-500"></div>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-950 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
       </div>
     )
   }
@@ -104,7 +104,7 @@ export default function EntryDetailPage() {
   if (!entry) return null
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-950 p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -128,13 +128,13 @@ export default function EntryDetailPage() {
                 type="text"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white text-xl font-bold focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white text-xl font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
               <textarea
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={15}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sacred-purple-500 resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
               />
               {saveError && (
                 <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-200 text-sm">
@@ -145,7 +145,7 @@ export default function EntryDetailPage() {
                 <button
                   onClick={handleSave}
                   disabled={saving}
-                  className="px-4 py-2 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors disabled:opacity-50"
                 >
                   {saving ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -230,8 +230,8 @@ function formatDate(dateString: string): string {
 
 function getSourceBadgeColor(source: string): string {
   switch (source) {
-    case 'voice': return 'bg-sacred-purple-500/20 text-sacred-purple-300'
-    case 'text': return 'bg-sacred-teal-500/20 text-sacred-teal-300'
+    case 'voice': return 'bg-emerald-500/20 text-emerald-300'
+    case 'text': return 'bg-stone-500/20 text-stone-300'
     case 'email': return 'bg-blue-500/20 text-blue-300'
     case 'image': return 'bg-yellow-500/20 text-yellow-300'
     default: return 'bg-white/10 text-white/60'

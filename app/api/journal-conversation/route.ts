@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
+import { extractEntities, saveEntitiesToMemory } from '@/lib/utils/entities'
 
 export async function POST(request: Request) {
   const supabase = await createSupabaseServerClient()
@@ -232,7 +233,13 @@ You embody the wisdom of those who guide others with love and honesty. You under
       ])
     }
 
-    // TODO: Extract entities from user message and update memory_items
+    // Extract entities from user message and update memory_items
+    if (message !== '__START_SESSION__') {
+      const entities = extractEntities(message)
+      if (entities.length > 0) {
+        await saveEntitiesToMemory(user.id, entities)
+      }
+    }
 
     return NextResponse.json({
       response: responseText,

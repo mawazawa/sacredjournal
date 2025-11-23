@@ -64,7 +64,7 @@ export default function SignUpPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-950 to-stone-950 p-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function SignUpPage() {
           </p>
           <Link
             href="/auth/signin"
-            className="text-sacred-purple-400 hover:text-sacred-purple-300"
+            className="text-emerald-400 hover:text-emerald-300"
           >
             Back to sign in
           </Link>
@@ -91,7 +91,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-950 to-stone-950 p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ export default function SignUpPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="you@example.com"
               required
             />
@@ -129,7 +129,7 @@ export default function SignUpPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="••••••••"
               required
               minLength={6}
@@ -145,7 +145,7 @@ export default function SignUpPage() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="••••••••"
               required
               minLength={6}
@@ -161,7 +161,7 @@ export default function SignUpPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Creating account...' : 'Create Account'}
           </button>
@@ -200,7 +200,7 @@ export default function SignUpPage() {
 
         <p className="mt-8 text-center text-white/60 text-sm">
           Already have an account?{' '}
-          <Link href="/auth/signin" className="text-sacred-purple-400 hover:text-sacred-purple-300">
+          <Link href="/auth/signin" className="text-emerald-400 hover:text-emerald-300">
             Sign in
           </Link>
         </p>

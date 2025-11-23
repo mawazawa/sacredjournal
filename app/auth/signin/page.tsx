@@ -50,7 +50,7 @@ function SignInForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-950 to-stone-950 p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ function SignInForm() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="you@example.com"
               required
             />
@@ -88,7 +88,7 @@ function SignInForm() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="••••••••"
               required
             />
@@ -103,7 +103,7 @@ function SignInForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
@@ -142,7 +142,7 @@ function SignInForm() {
 
         <p className="mt-8 text-center text-white/60 text-sm">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-sacred-purple-400 hover:text-sacred-purple-300">
+          <Link href="/auth/signup" className="text-emerald-400 hover:text-emerald-300">
             Sign up
           </Link>
         </p>
@@ -154,8 +154,8 @@ function SignInForm() {
 export default function SignInPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sacred-purple-500"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-950 to-stone-950">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
       </div>
     }>
       <SignInForm />

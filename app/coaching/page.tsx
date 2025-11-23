@@ -93,7 +93,7 @@ export default function CoachingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sacred-purple-950 to-sacred-teal-950 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 to-stone-950 flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-white/10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
@@ -123,8 +123,8 @@ export default function CoachingPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center py-12"
             >
-              <div className="w-16 h-16 bg-sacred-teal-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-sacred-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-stone-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
@@ -160,7 +160,7 @@ export default function CoachingPage() {
                 <div
                   className={`max-w-[80%] p-4 rounded-2xl ${
                     message.role === 'user'
-                      ? 'bg-sacred-purple-600 text-white'
+                      ? 'bg-emerald-600 text-white'
                       : 'bg-white/10 text-white'
                   }`}
                 >
@@ -199,13 +199,13 @@ export default function CoachingPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
-              className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-sacred-purple-500"
+              className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               disabled={loading}
             />
             <button
               type="submit"
               disabled={!input.trim() || loading}
-              className="px-6 py-3 bg-sacred-purple-600 hover:bg-sacred-purple-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Send
             </button>
