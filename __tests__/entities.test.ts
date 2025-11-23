@@ -90,4 +90,128 @@ describe('extractEntities', () => {
       expect(sarahEntities.length).toBe(1)
     })
   })
+
+  describe('Context extraction', () => {
+    it('should extract context around entity', () => {
+      const text = 'I was feeling very happy today because of the good news.'
+      const entities = extractEntities(text)
+
+      const happyEntity = entities.find(e => e.name === 'happy')
+      expect(happyEntity).toBeDefined()
+      expect(happyEntity?.context).toContain('happy')
+    })
+  })
+
+  describe('Sentiment analysis', () => {
+    it('should detect positive sentiment from context', () => {
+      const text = 'I met with Sarah and it was wonderful and amazing.'
+      const entities = extractEntities(text)
+
+      const sarahEntity = entities.find(e => e.name === 'Sarah')
+      expect(sarahEntity?.sentiment).toBe('positive')
+    })
+
+    it('should detect negative sentiment from context', () => {
+      const text = 'I talked to my mom about the terrible situation.'
+      const entities = extractEntities(text)
+
+      const momEntity = entities.find(e => e.name.toLowerCase() === 'mom')
+      expect(momEntity?.sentiment).toBe('negative')
+    })
+
+    it('should default to neutral sentiment', () => {
+      const text = 'I talked to Sarah yesterday.'
+      const entities = extractEntities(text)
+
+      const sarahEntity = entities.find(e => e.name === 'Sarah')
+      expect(sarahEntity?.sentiment).toBe('neutral')
+    })
+  })
+
+  describe('Activity extraction', () => {
+    it('should extract activities from started patterns', () => {
+      const text = 'I started learning Spanish last week.'
+      const entities = extractEntities(text)
+
+      const activities = entities.filter(e => e.type === 'activity')
+      expect(activities.length).toBeGreaterThan(0)
+      expect(activities[0].name).toContain('learning')
+    })
+
+    it('should extract activities from working on patterns', () => {
+      const text = 'I am working on a new project.'
+      const entities = extractEntities(text)
+
+      const activities = entities.filter(e => e.type === 'activity')
+      expect(activities.length).toBeGreaterThan(0)
+    })
+  })
+
+  describe('Common word filtering', () => {
+    it('should filter out common words like "The"', () => {
+      const text = 'The meeting went well.'
+      const entities = extractEntities(text)
+
+      const theEntities = entities.filter(e => e.name === 'The')
+      expect(theEntities.length).toBe(0)
+    })
+
+    it('should filter out "I", "It", "This", etc.', () => {
+      const text = 'I think This is important. It matters to What we do.'
+      const entities = extractEntities(text)
+
+      const commonEntities = entities.filter(e =>
+        ['I', 'It', 'This', 'What'].includes(e.name)
+      )
+      expect(commonEntities.length).toBe(0)
+    })
+  })
+
+  describe('Edge cases', () => {
+    it('should handle empty text', () => {
+      const entities = extractEntities('')
+      expect(entities).toEqual([])
+    })
+
+    it('should handle text with no entities', () => {
+      const text = 'just some random text without any patterns'
+      const entities = extractEntities(text)
+
+      // May still extract emotions or other simple patterns
+      expect(Array.isArray(entities)).toBe(true)
+    })
+
+    it('should handle very long text', () => {
+      const text = 'Sarah '.repeat(100) + 'told me about John.'
+      const entities = extractEntities(text)
+
+      // Should still extract entities without crashing
+      expect(entities.length).toBeGreaterThan(0)
+    })
+
+    it('should handle special characters', () => {
+      const text = 'I met with Sarah! She\'s so kind... Really? Yes!'
+      const entities = extractEntities(text)
+
+      expect(entities.length).toBeGreaterThan(0)
+    })
+  })
+
+  describe('Goal patterns', () => {
+    it('should extract goals from "my goal is" patterns', () => {
+      const text = 'My goal is to improve my health.'
+      const entities = extractEntities(text)
+
+      const goals = entities.filter(e => e.type === 'goal')
+      expect(goals.length).toBeGreaterThan(0)
+    })
+
+    it('should extract goals from "need to" patterns', () => {
+      const text = 'I need to finish the report by Friday.'
+      const entities = extractEntities(text)
+
+      const goals = entities.filter(e => e.type === 'goal')
+      expect(goals.length).toBeGreaterThan(0)
+    })
+  })
 })
