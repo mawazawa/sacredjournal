@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation
+RESEARCH.md
+README.md
+*.md
+docs/
+
+# Git
+.git/
+.gitignore
