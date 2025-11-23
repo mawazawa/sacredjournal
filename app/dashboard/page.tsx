@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
 import { motion } from 'framer-motion'
 import type { Database } from '@/lib/supabase/client'
+import { getDisplayName } from '@/lib/utils/user'
 
 type Entry = Database['public']['Tables']['entries']['Row']
 type User = Database['public']['Tables']['users']['Row']
@@ -79,7 +80,7 @@ export default function DashboardPage() {
         >
           <div>
             <h1 className="text-2xl md:text-3xl font-bold text-white">
-              {greeting}, {user?.full_name || user?.email?.split('@')[0]}
+              {greeting}, {getDisplayName(user)}
             </h1>
             <p className="text-white/60 mt-1">Ready to journal?</p>
           </div>

@@ -21,6 +21,7 @@ export default function EntryDetailPage() {
   const [editContent, setEditContent] = useState('')
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [saveError, setSaveError] = useState<string | null>(null)
 
   useEffect(() => {
     loadEntry()
@@ -55,6 +56,7 @@ export default function EntryDetailPage() {
   const handleSave = async () => {
     if (!entry) return
     setSaving(true)
+    setSaveError(null)
 
     const wordCount = editContent.trim().split(/\s+/).filter(w => w.length > 0).length
 
@@ -67,7 +69,9 @@ export default function EntryDetailPage() {
       })
       .eq('id', entry.id)
 
-    if (!error) {
+    if (error) {
+      setSaveError(error.message)
+    } else {
       setEntry({ ...entry, title: editTitle, content: editContent, word_count: wordCount })
       setIsEditing(false)
     }
@@ -132,6 +136,11 @@ export default function EntryDetailPage() {
                 rows={15}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-sacred-purple-500 resize-none"
               />
+              {saveError && (
+                <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-200 text-sm">
+                  {saveError}
+                </div>
+              )}
               <div className="flex gap-3">
                 <button
                   onClick={handleSave}
